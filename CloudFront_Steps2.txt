@@ -1,0 +1,73 @@
+CloudFront
+===============
+
+1)Install Ubuntu (t2.micro)
+apt update
+
+2)Install apache
+apt install apache2 -y
+
+3)
+/var/www/html
+
+vi index.html
+
+index.html
+
+<h1 style="color:red"> Welcome to Naresh IT </h1>
+
+4)Add HTTP (Port 80) into Security Group
+
+
+-----------------
+CloudFront
+
+Origin domain:
+ec2-13-201-184-145.ap-south-1.compute.amazonaws.com
+
+Protocol:
+HTTP Only
+
+Cache key and origin requests => Cache policy => Select "CachingOptimized"
+
+Web Application Firewall (WAF)
+Select radio button => "Do not enable security protections"
+
+Click: "Create Distribution"
+===============================
+
+Distribution domain name: https://d184xuw0hk3fls.cloudfront.net
+Copy in a browser: https://d184xuw0hk3fls.cloudfront.net
+============================================================================
+Case 1:
+
+1)In Chrome, Press: F12
+2)Select 'Network' tab
+3)Paste in Browser:  https://d184xuw0hk3fls.cloudfront.net
+4)We should able to see the web page content
+5)Click on first entry under 'Name' column of 'Network' tab
+6)Under 'Response Headers', we should see 'Miss from cloudfront'
+
+Miss from cloudfront
+
+Case 2:
+1)Refresh the Browser
+2)Under 'Response Headers', we should see 'Hit from cloudfront'
+
+Case 3:
+1) Modify the web page content as below:
+
+<h1 style="color:green"> Welcome to Naresh IT </h1>
+
+2)
+
+CloudFront does not know about file change
+
+Step 1: Click tab "Invalidations"
+Step 2: Click button "Create Invalidation"
+Step 3: Add /* => Under "Add object paths"
+Step 4: Click button "Create Invalidation"
+
+3) Repeat [Case 1]
+
+=========================================================================

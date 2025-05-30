@@ -1,0 +1,39 @@
+AWS Storage:
+------------
+
+1) EBS(Elastic Block Store) - Block Level Storage, 1GB to 16TB, attach to EC2 instance, IOPS 100/3000, SSD  1GB $20
+
+2) S3(Simple Storage Service) - Objective Storage, Global Storage and Public Cloud Storage - Compare with Google Drive
+
+3) EFS(Elastic File System) - File Level Storage , TRansfer files from Zone to Zone and Region to Region
+
+4) Glacier - Cold Storage, Backups/Archive   1GB Data  $1
+
+5) Snapshots - Replica/Binary Copy
+
+6) AWS Backup - 
+   
+   Backup Strategies: 
+   ------------------
+   1) Daily bkps - incremental bkp, Retention 30days, DNS,DHCP, Share folders Prod apps, Dell DataDomain 6PM - 5AM
+
+   2) Weekly bkps - Full bkp, Retention 90days, ALL VM bkps, DB, Prod apps, Dell TapeLibrarys Fri 7PM - Sun 5AM
+
+   3) Monthly bkps - Full bkp, Retention 90 days, ALL BKps, Dell TapeLibrary  1st Fri 8PM - Mon 5AM
+
+   4) On-Demand bkps - Instantly or Immidietly 
+
+
+
+EBS Volume Task:
+-----------------
+1) Create a ubuntu Server while creating  delete on termination should be no
+2) Connect the server and create 100 files and 100 folders
+3) terminate the server as per project requirement
+4) take the snapshot by using the available volume
+5) Delete the volume
+6) Crete volume using the snapshot
+7) Create a test server and attach the volume as secondary volume with drive name /dev/sdb
+8) Stop the server and detach both the volumes
+9) attach old volume as primary volume with drive name /dev/xvda
+10) Start instance and check the data is available or not

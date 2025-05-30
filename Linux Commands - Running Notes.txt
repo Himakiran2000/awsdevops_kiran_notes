@@ -1,0 +1,236 @@
+Linux Commands:
+---------------
+$ --> Normal user prompt
+
+sudo -i --> to switch root
+# --> root prompt
+
+hostname Linux-Server  --> to change the hostname
+exec bash --> to reflect the hostname 
+
+date --> to check the date & time
+
+cal --> to check the current month calendar
+
+cal 01 2020  --> to check old calendar 
+
+pwd --> to check present working directory
+
+who --> to check the login user
+
+whoami --> to check the current user
+
+users  --> to check all the user
+
+clear --> to clear the screen
+
+Linux Basic Commands 1st set of Commands:
+-----------------------------------------
+creating, removing, copying & moving files & directorys
+
+cat > filename --> to create a file
+EX: cat > file.txt
+    Welcome to Naresh IT
+    ctrl+d
+
+ls --> list files & directorys
+
+cat filename  --> to read content in the file
+
+cat >> filename --> to append content in the file
+
+touch file1 file2 file3 file4 file5 --> to create multiple files
+
+touch xyz{1..1000} --> to create 1000 files
+
+mkdir directory name --> to create a directory
+
+mkdir jenkins{1..100} --> to create 100 directory
+
+cp source filename destination directory --> to copy file in to directory
+
+mv source filename destination directory --> to move the file in to directory
+
+cd directory name --> to move in to the directory
+
+cd .. --> to exit from the directory
+
+rm filename --> to remove the file
+
+rm -rf filename --> to remove the file forcefully 
+
+rmdir directory name --> to remove the directory
+
+rm -rf directory name --> to remove the directory forcefully
+
+mv old_directory new_directory  --> to rename the directory
+
+Filter Commands:
+----------------
+1) less --> to read the file pagewise 
+2) more --> to read the file pagewise
+3) head --> to read top 10 lines of the file
+   head -5 filename --> to read top 5 lines of the file
+4) tail --> to read last 10 lines of the file
+   tail -5 filename --> to read last 5 lines of the file
+
+File Editors:
+-------------
+vi  --> Visual display editor
+vim --> Visual display editor improved
+
+Vi is having 3 modes:
+
+1) Command mode:
+   EX: vi filename
+   move courser left to right and top to bottom
+   yy --> to copy entire line
+   p  --> to paste entire line
+   dd --> to delete entire line
+   u  --> to undo the lines
+   w  --> to move the courser word by word
+   b  --> to move the courser back word by word
+
+   i --> to move insert mode
+
+2) Insert mode
+   We can edit the content
+   esc  --> to move extended command mode
+
+3) Extended command mode:
+   :w --> to save the file
+   :q --> to quit the file with out save
+   :wq --> to save & quit the file
+   :w! --> to save the file forcefully
+   :q! --> to quit the file forcefully
+   :wq! --> to save and quit the file forcefully
+
+Find: Search
+-------------
+find / -name filename --> to find the file
+find / -name foldername --> to find the folder
+find / -name user name --> to find the user
+find / -name group name --> to find the group
+
+File permissions:
+-----------------
+File permissions are applied on 3 level:
+
+1) User or Owner Level
+2) Group Level 
+3) Others Level
+
+r = read only
+w = write/edit/append
+x = Execute
+
+chmod u= , g= ,o=  filename
+
+ls -l filename  --> to list the files & folders with long listing
+
+2 Absolute method:  We use numbers
+------------------
+r = 4
+w = 2
+x = 1
+
+EX: chmod 421 filename
+ 
+    chmod 666 filename
+
+User Management:
+----------------
+useradd/adduser username --> to add the user
+
+passwd username --> to add password to the user
+
+vi /etc/sudoers --> to apply permissions to the user
+i --> to move insert mode
+root ALL  ALL  ALL
+yy
+p
+ram ALL  ALL  ALL
+
+esc
+
+:wq!
+
+su username --> to switch user
+
+exit/quit --> to exit for the user
+
+Deployment Commands:
+--------------------
+
+Linux Family"s:
+
+                                apt-get update -y
+Debein Family:                  apt/apt-get
+               Ubuntu           apt-get install java -y
+               Fedora           java -version
+               AVLinux          apt-get install openjdk-8* -y
+               GRML             apt-get install git -y
+                                git --version
+
+
+                                 yum update -y
+Redhat family:                   yum
+               RHEL              yum install java -y
+               CentOS
+               Amazon Linux
+               SuseLinux
+
+wget apache-tomcatxxxxxxxxxxxxxxxxxxxxx.tar
+tar -xvzf apaxxxxxxxxxxxxxxxxxxxxxxxxxxx.tar
+
+wget apache-tomcatxxxxxxxxxxxxxxxxxxxxx.zip
+unzip apaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.zip
+
+
+The Below Commands Should not be Executed on Production Servers:
+-----------------------------------------------------------------
+init 0  --> Server will be shutdown
+
+init 1  --> server will be restarted
+
+init 6  --> Server will be Powered off
+
+shutdown -
+
+Reboot -
+
+Poweroff -
+
+EC2 Customized AMIs: Project
+-----------------------------
+
+Java Project: Startup
+
+POC(Proof of Concept): 45 days time line
+
+3 Dev Servers --> java, GIT, Maven, Ansible, Tomcat   AMI  300
+
+3 QA Servers --> Testing Tools                        AMI  300
+
+3 Prod Servers --> Prod Application                   AMI  400
+
+EC2 Task#1:
+------------
+
+1) Create EC2 instance with Amazon Linux 
+2) Switch Root and change the Hostname
+3) Update internal repo by using yum update -y
+4) install java -> yum install java -y
+5) install git -> yum install git -y
+6) Install maven -> yum install maven -y
+7) download tomcat --> goto browser select tomcat version, right click on tar, Copy link address,  wget paste the url
+8) untar the apache tomcat file --> tar -xvzf apa and click on tab
+9) go to untar folder --> cd apa click on tab
+10) ls , cd bin
+11) ./sh and use tab    , ./st  and use tab
+12) Copy public IP and paste in the browser :8080
+To change the port number:
+13) cd .. --> to exit from the bin directory
+14) cd conf
+15) vi server.xml   and modify the connector port
+16) again restart tomcat service
